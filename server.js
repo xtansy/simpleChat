@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static('build'));
-    app.get('*', (req, res) => {
+    app.get('/', (req, res) => {
         req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
     })
 }
@@ -34,7 +34,7 @@ app.get('/room:id', (req, res) => {
 })
 
 app.post('/room', (req, res) => {
-    const { roomId, username } = req.body;
+    const { roomId } = req.body;
 
     if (!rooms.has(roomId)) {
         rooms.set(roomId, new Map([['users', new Map()], ['messages', []]]))

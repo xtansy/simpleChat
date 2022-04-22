@@ -22,7 +22,7 @@ const Chat = ({users,
     }
 
     useEffect(() => {
-        messageList.current.scrollTo(0, 9999);
+        messageList.current.scrollTo(0, 999999);
     }, [messages])
 
     return (

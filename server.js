@@ -9,6 +9,7 @@ const io = new Server(server, {
     }
 });
 
+const PORT = process.env.PORT || 3001;
 app.use(express.json());
 
 const rooms = new Map();
@@ -60,6 +61,6 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(3001, () => {
-    console.log('listening on 3001');
+server.listen(PORT, () => {
+    console.log('listening on ' + PORT);
 });

@@ -11,9 +11,7 @@ const Chat = ({users,
     const [message, setMessage] = useState('');
 
     const messageList = useRef();
-    
-
-
+        
     const onMessage = (e) => {
         e.preventDefault();
         if (message) {

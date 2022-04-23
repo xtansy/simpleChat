@@ -11,7 +11,9 @@ const Chat = ({users,
     const [message, setMessage] = useState('');
 
     const messageList = useRef();
-        
+    
+
+
     const onMessage = (e) => {
         e.preventDefault();
         if (message) {
@@ -22,7 +24,7 @@ const Chat = ({users,
     }
 
     useEffect(() => {
-        messageList.current.scrollTo(0, 999999);
+        messageList.current.scrollTo(0, 9999);
     }, [messages])
 
     return (
@@ -32,10 +34,10 @@ const Chat = ({users,
             <div className='chatbox'>
 
                 <div className='chatbox__user-list'>
-                    <h1>Online: {users.length && users.length}</h1>
+                    <h1>Online: {users.length}</h1>
                     <h1>User list</h1>
                     {
-                        users && users.map((item, i) => {
+                        users.map((item, i) => {
                             return (
                                 <div key={i} className='chatbox__user--active'>
                                     <p>{item}</p>

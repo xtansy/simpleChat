@@ -47,6 +47,13 @@ body {
 		}
 	}
 }
+.app_non-validate::after {
+	content: "Длинны входных данных не более 10 символов";
+	display: block;
+	font-size: 15px;
+	color: firebrick;
+	text-transform: lowercase;
+}
 
 
 

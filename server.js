@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
@@ -9,15 +8,6 @@ const io = new Server(server, {
         origin: "*"
     }
 });
-
-const PORT = process.env.PORT || 3001;
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static('build'));
-    app.get('/', (req, res) => {
-        req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-    })
-}
 
 app.use(express.json());
 
@@ -34,7 +24,7 @@ app.get('/room:id', (req, res) => {
 })
 
 app.post('/room', (req, res) => {
-    const { roomId } = req.body;
+    const { roomId, username } = req.body;
 
     if (!rooms.has(roomId)) {
         rooms.set(roomId, new Map([['users', new Map()], ['messages', []]]))
@@ -70,6 +60,6 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(PORT, () => {
-    console.log('listening on ' + PORT);
+server.listen(3001, () => {
+    console.log('listening on 3001');
 });

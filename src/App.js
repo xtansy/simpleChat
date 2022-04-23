@@ -24,12 +24,11 @@ const App = () => {
 
 		socket.emit('ROOM:JOIN', {roomId, username})
 
-		const response = await axios.get(`/room:${roomId}`);
+		const { data } = await axios.get(`/room:${roomId}`);
 
-		const obj = response.data;
+		dispatch({type:'SET_DATA', payload: data})
 
-
-		dispatch({type:'SET_DATA', payload: obj})
+		dispatch({type:'join'});
 	}
 
 	const setUsers = (users) => {

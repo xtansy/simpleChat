@@ -11,9 +11,13 @@ const reducer = (state = initialState, action) => {
         case 'ROOMS:JOINED':
             return {
                 ...state,
-                joined: true,
                 username: action.payload.username,
                 roomId: action.payload.roomId,
+            }
+        case 'join':
+            return {
+                ...state,
+                joined: true
             }
         case 'SET_DATA': 
             return {

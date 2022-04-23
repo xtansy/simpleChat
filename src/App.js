@@ -28,7 +28,6 @@ const App = () => {
 
 		dispatch({type:'SET_DATA', payload: data})
 
-		dispatch({type:'join'});
 	}
 
 	const setUsers = (users) => {

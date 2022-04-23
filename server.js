@@ -10,7 +10,7 @@ const io = new Server(server, {
     }
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT ||  3001;
 app.use(express.json());
 
 
@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
         req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     })
 }
+
 
 const rooms = new Map();
 

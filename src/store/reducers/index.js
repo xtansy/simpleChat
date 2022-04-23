@@ -24,6 +24,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 users: action.payload.usersNames,
                 messages: action.payload.messages,
+                joined: true
             }
         case 'SET_USERS':
             return {

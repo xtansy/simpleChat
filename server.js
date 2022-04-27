@@ -26,10 +26,12 @@ const rooms = new Map();
 
 app.get('/room:id', (req, res) => {
     const roomId = req.params.id.slice(1);
-
-    const usersMap = rooms.get(roomId).get('users'); 
-    const usersNames = [...usersMap.values()]
+    const usersNames = [...rooms.get(roomId).get('users').values()]
     const messages = [...rooms.get(roomId).get('messages').values()] 
+
+    console.log('get юзеров');
+    console.log(usersNames);
+
 
     res.send({usersNames, messages});
 })
@@ -46,12 +48,16 @@ app.post('/room', (req, res) => {
 
 io.on('connection', (socket) => {
 
-    socket.on('ROOM:JOIN', ( {roomId, username} ) => {  
-        const usersMap = rooms.get(roomId).get('users'); 
+    socket.on('ROOM:JOIN', async ( {roomId, username} ) => {  
         socket.join(roomId);
-        usersMap.set(socket.id, username)
-        const usersNames = [...usersMap.values()]
-        socket.to(roomId).emit('ROOM:SET_USERS', usersNames);
+        rooms.get(roomId).get('users').set(socket.id, username)
+
+        const users = [...rooms.get(roomId).get('users').values()];
+        const messages = [...rooms.get(roomId).get('messages')]
+        
+        socket.to(roomId).emit('ROOM:SET_USERS', users);
+        socket.emit('ROOM:SET_DATA', {users, messages});
+
     })
 
     socket.on('ROOM:MESSAGE', ( {roomId, username, message} ) => {  

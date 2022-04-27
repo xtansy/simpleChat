@@ -18,17 +18,6 @@ const App = () => {
     const { users, username, roomId, messages} = useSelector(state => state)
 
 
-	const onLogin = async ( {roomId, username} ) => { 
-
-		dispatch({type: 'ROOMS:JOINED', payload: {username, roomId}})
-
-		socket.emit('ROOM:JOIN', {roomId, username})
-
-		const { data } = await axios.get(`/room:${roomId}`);
-
-		dispatch({type:'SET_DATA', payload: data})
-
-	}
 
 	const setUsers = (users) => {
 		dispatch({type: 'SET_USERS', payload: users})
@@ -38,9 +27,18 @@ const App = () => {
 		dispatch({type: 'NEW_MESSAGE', payload: messages});
 	}
 
+	const onLogin = async ( {roomId, username} ) => { 
+		dispatch({type: 'ROOMS:JOINED', payload: {username, roomId}});
+		socket.emit('ROOM:JOIN', {roomId, username})
+	}
+
 	useEffect(() => {
 		socket.on('ROOM:SET_USERS', (users) => {
 			setUsers(users);
+		})
+
+		socket.on('ROOM:SET_DATA', (obj) => {
+			dispatch({type:'SET_DATA', payload: obj})
 		})
 
 		socket.on('ROOM:MESSAGE', (messages) => {

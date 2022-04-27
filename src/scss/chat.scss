@@ -140,4 +140,48 @@ $active: rgba(23, 190, 187, 0.8);
   overflow-x: hidden;
 }
 
+@media (max-width: 700px) {
+  .chatbox {
+    width: 490px;
+  }
+}
+@media (max-width: 650px) {
+  .chatbox {
+    width: 400px;
+  }
+  .chatbox__messages__user-message--ind-message  {
+    width: 35%;
+  }
+}
+@media (max-width: 600px) {
+  .chatbox {
+    width: 350px;
+  }
+  .chatbox__messages__user-message--ind-message  {
+    width: 25%;
+  }
+}
+@media (max-width: 400px) {
+  .chatbox__user-list {
+    width: 35%;
+  }
+  .chatbox {
+    width: 250px;
+  }
+  .chatbox {
+    form {
+      input {
+        width: 65%;
+      }
+    }
+  }
+}
+@media (max-width: 350px) {
+  .chatbox {
+    width: 287px;
+  }
+
+}
+
+
 

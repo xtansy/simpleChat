@@ -2,7 +2,7 @@
 
 **О приложении**: простой чат с возможностью присоединиться по id комнаты и начать переписку, отображение онлайна комнаты. Данные хранятся в Map.
 
-# TOOLS
+## TOOLS :hammer:wrench::
 
 ![React](https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=fff)
 

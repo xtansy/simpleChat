@@ -1,63 +1,58 @@
-import React from 'react';
-import socket from './socket';
-import { SignUp, Chat } from './components';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import socket from "./socket";
 
-import axios from 'axios';
-
-import { useEffect } from 'react';
-
-
+import { SignUp, Chat } from "./components";
 
 const App = () => {
+    const dispatch = useDispatch();
 
-	const dispatch = useDispatch();
+    const { users, username, roomId, messages, joined } = useSelector(
+        (state) => state
+    );
 
-	const joined = useSelector(state => state.joined)
+    const setUsers = (users) => {
+        dispatch({ type: "SET_USERS", payload: users });
+    };
 
-    const { users, username, roomId, messages} = useSelector(state => state)
+    const onAddMessage = ({ username, message }) => {
+        dispatch({ type: "NEW_MESSAGE", payload: { username, message } });
+    };
 
+    const onLogin = async ({ roomId, username }) => {
+        dispatch({ type: "ROOMS:JOINED", payload: { username, roomId } });
+        socket.emit("ROOM:JOIN", { roomId, username });
+    };
 
+    useEffect(() => {
+        socket.on("ROOM:SET_USERS", (users) => {
+            setUsers(users);
+        });
 
-	const setUsers = (users) => {
-		dispatch({type: 'SET_USERS', payload: users})
-	}
+        socket.on("ROOM:SET_DATA", (obj) => {
+            dispatch({ type: "SET_DATA", payload: obj });
+        });
 
-	const onAddMessage = (messages) => {
-		dispatch({type: 'NEW_MESSAGE', payload: messages});
-	}
+        socket.on("ROOM:MESSAGE", (messages) => {
+            onAddMessage(messages);
+        });
+    }, []);
 
-	const onLogin = async ( {roomId, username} ) => { 
-		dispatch({type: 'ROOMS:JOINED', payload: {username, roomId}});
-		socket.emit('ROOM:JOIN', {roomId, username})
-	}
-
-	useEffect(() => {
-		socket.on('ROOM:SET_USERS', (users) => {
-			setUsers(users);
-		})
-
-		socket.on('ROOM:SET_DATA', (obj) => {
-			dispatch({type:'SET_DATA', payload: obj})
-		})
-
-		socket.on('ROOM:MESSAGE', (messages) => {
-			onAddMessage(messages);
-		})
-
-	}, [])
-
-	return (
-		<>
-			{!joined ? <SignUp onLogin={onLogin}/> : <Chat 
-			users={users} 
-			username={username} 
-			roomId={roomId} 
-			messages={messages}
-			onAddMessage={onAddMessage}
-			/>}
-		</>
-	);
+    return (
+        <>
+            {!joined ? (
+                <SignUp onLogin={onLogin} />
+            ) : (
+                <Chat
+                    username={username}
+                    users={users}
+                    roomId={roomId}
+                    messages={messages}
+                    onAddMessage={onAddMessage}
+                />
+            )}
+        </>
+    );
 };
 
 export default App;

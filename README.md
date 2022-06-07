@@ -1,22 +1,8 @@
 # :love_letter: Skiddy Chat :love_letter:
 
-## О приложении: простой чат с возможностью присоединиться по id комнаты и начать переписку, отображение онлайна комнаты. Данные хранятся в Map.
+**О приложении**: простой чат с возможностью присоединиться по id комнаты и начать переписку, отображение онлайна комнаты. Данные хранятся в Map.
 
-### Заголовок 3 ур
-
-#### Заголовок 4 ур
-
----
-
-**bold** _italic_ **_boldAndItalic_**
-
-`int a = true;`
-
-```js
-function dosmt() {
-    return "Hello world";
-}
-```
+# TOOLS
 
 ![React](https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=fff)
 

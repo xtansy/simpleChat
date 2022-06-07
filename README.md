@@ -4,10 +4,12 @@
 
 ## :camera: Картинки
 
-Компонент _SignUp_
+### Компонент _SignUp_
+
 ![SignUp](./public/signUp.PNG)
 
-Компонент _Chat_
+### Компонент _Chat_
+
 ![Chat](./public/chat.png)
 
 ## :hammer: Технологии

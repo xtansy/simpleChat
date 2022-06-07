@@ -4,7 +4,7 @@
 
 ## :camera: Картинки
 
-![SignUp](signUp.PNG")"
+![SignUp](public/signUp.PNG")"
 ![Chat]()
 
 ## :hammer: Технологии

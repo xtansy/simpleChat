@@ -2,13 +2,13 @@
 
 **О приложении**: простой чат с возможностью присоединиться по id комнаты и начать переписку, отображение онлайна комнаты. Данные хранятся в Map.
 
-**:camera: Картинки**
+## :camera: Картинки
 
 Компонент _SignUp_
-![SignUp](./public/signUp.PNG)
+![SignUp](./public/signUp.png)
 
 Компонент _Chat_
-![Chat](./public/chat.PNG)
+![Chat](./public/chat.png)
 
 ## :hammer: Технологии
 

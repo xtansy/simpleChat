@@ -5,7 +5,7 @@
 ## :camera: Картинки
 
 Компонент _SignUp_
-![SignUp](./public/signUp.png)
+![SignUp](./public/signUp.PNG)
 
 Компонент _Chat_
 ![Chat](./public/chat.png)

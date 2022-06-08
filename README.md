@@ -1,5 +1,7 @@
 # :love_letter: Skiddy Chat :love_letter:
 
+## :globe_with_meridians: [Деплой на heroku](https://safe-ocean-61107.herokuapp.com/)
+
 **О приложении**: простой чат с возможностью присоединиться по id комнаты и начать переписку, отображение онлайна комнаты. Данные хранятся в Map.
 
 ## :hammer: Технологии
